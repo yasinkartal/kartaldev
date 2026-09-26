@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "./components/Footer";
 import SmoothScroll from "./components/SmoothScroll";
 import EnterpriseCore from "./components/EnterpriseCore";
 
@@ -226,23 +227,8 @@ export default function Home() {
 
         </div>
 
-        {/* Footer */}
-        <footer className="py-12 border-t border-slate-900 bg-slate-950/90 backdrop-blur-md relative z-10 text-center text-xs text-slate-500">
-          <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div>
-              <span className="font-bold text-white tracking-widest">KARTAL.DEV</span> — ERP • DATA • CONTEXT • AGENTS
-            </div>
-            <div className="flex gap-6 text-xs font-medium">
-              <span className="hover:text-slate-300 cursor-pointer">LinkedIn</span>
-              <span className="hover:text-slate-300 cursor-pointer">GitHub</span>
-              <span className="hover:text-slate-300 cursor-pointer">SAP Community</span>
-            </div>
-            <div className="text-[10px] text-slate-600">
-              Buradaki görüşler ve içerikler kişiseldir; mevcut veya geçmiş işverenleri temsil etmez. <br />
-              © 2026 Yasin Kartal
-            </div>
-          </div>
-        </footer>
+        {/* Dinamik Footer Bileşeni */}
+        <Footer />
 
       </main>
     </SmoothScroll>
