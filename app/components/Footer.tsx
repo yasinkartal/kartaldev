@@ -24,7 +24,7 @@ export default function Footer() {
           </a>
         </div>
         <div className="text-[10px] text-slate-600">
-          Buradaki görüşler ve içerikler kişiseldir; mevcut veya geçmiş işverenleri temsil etmez. <br />
+          Buradaki görüşler ve içerikler kişiseldir. <br />
           © {new Date().getFullYear()} Yasin Kartal
         </div>
       </div>
