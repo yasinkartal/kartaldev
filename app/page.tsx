@@ -9,9 +9,9 @@ export default function Home() {
     <SmoothScroll>
       <main className="min-h-screen bg-[#03050c] text-slate-100 relative overflow-hidden font-sans selection:bg-cyan-500/30 selection:text-cyan-200">
         
-        {/* Sticky 3D Canvas */}
-        <div className="fixed inset-0 pointer-events-none z-0 flex items-center justify-center">
-          <div className="w-full h-full max-w-7xl mx-auto pointer-events-auto">
+        {/* Sticky 3D Canvas (Scroll ile Katman Katman İnşa Edilen Mimari Obje) */}
+        <div className="fixed inset-0 pointer-events-none z-0 flex items-center justify-center lg:justify-end lg:pr-12">
+          <div className="w-full h-full max-w-4xl pointer-events-auto">
             <EnterpriseCore />
           </div>
         </div>
@@ -56,7 +56,7 @@ export default function Home() {
                 <div className="w-[1px] h-32 bg-gradient-to-b from-slate-600 to-transparent" />
               </div>
               <div>
-                <span className="text-xs uppercase font-mono tracking-widest text-slate-400 block mb-2">RAW DATA</span>
+                <span className="text-xs uppercase font-mono tracking-widest text-slate-400 block mb-2">RAW DATA LAYER</span>
                 <h2 className="text-3xl lg:text-4xl font-black text-white mb-4 leading-tight">
                   Veri hep vardı.
                 </h2>
@@ -73,10 +73,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="hidden lg:block max-w-[200px] text-right font-mono text-xs text-slate-500 uppercase leading-relaxed">
-              KAYDETMEK YETERLİYDİ. <br />
-              <span className="text-slate-400 font-bold">ARTIK DEĞİL.</span>
-            </div>
           </section>
 
           {/* 02 / CONNECTION */}
@@ -88,7 +84,7 @@ export default function Home() {
                 <div className="w-[1px] h-32 bg-gradient-to-b from-cyan-500 to-transparent" />
               </div>
               <div>
-                <span className="text-xs uppercase font-mono tracking-widest text-cyan-400 block mb-2">NETWORKS & PLATFORMS</span>
+                <span className="text-xs uppercase font-mono tracking-widest text-cyan-400 block mb-2">NETWORKS & INTEGRATION</span>
                 <h2 className="text-3xl lg:text-4xl font-black text-white mb-4 leading-tight">
                   Veri bağlandı.
                 </h2>
@@ -106,10 +102,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="hidden lg:block max-w-[200px] text-right font-mono text-xs text-cyan-400/80 uppercase leading-relaxed">
-              SİSTEMLER BAĞLANDI. <br />
-              <span className="text-white font-bold">VERİ HAREKET ETMEYE BAŞLADI.</span>
-            </div>
           </section>
 
           {/* 03 / CONTEXT */}
@@ -121,7 +113,7 @@ export default function Home() {
                 <div className="w-[1px] h-32 bg-gradient-to-b from-purple-500 to-transparent" />
               </div>
               <div>
-                <span className="text-xs uppercase font-mono tracking-widest text-purple-400 block mb-2">BUSINESS RULES</span>
+                <span className="text-xs uppercase font-mono tracking-widest text-purple-400 block mb-2">SEMANTIC & BUSINESS RULES</span>
                 <h2 className="text-3xl lg:text-4xl font-black text-white mb-4 leading-tight">
                   Veri anlam kazandı.
                 </h2>
@@ -137,10 +129,6 @@ export default function Home() {
                   <span className="px-2 py-1 bg-purple-950/60 border border-purple-800/80 rounded">Context Engineering</span>
                 </div>
               </div>
-            </div>
-            <div className="hidden lg:block max-w-[220px] text-right font-mono text-xs text-purple-300/80 uppercase leading-relaxed">
-              VERİYİ GÖRMEK DEĞİL, <br />
-              <span className="text-white font-bold">NE ANLAMA GELDİĞİNİ BİLMEK.</span>
             </div>
           </section>
 
@@ -171,13 +159,9 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="hidden lg:block max-w-[220px] text-right font-mono text-xs text-blue-300/80 uppercase leading-relaxed">
-              SORMAKTAN, <br />
-              <span className="text-white font-bold">ANLAMAYA.</span>
-            </div>
           </section>
 
-          {/* 05 / AGENCY (Yeni 2026 Katmanı) */}
+          {/* 05 / AGENCY */}
           <section data-stage="agency" className="min-h-screen flex items-center justify-between py-20">
             <div className="flex items-start gap-6 max-w-md">
               <div className="flex flex-col items-center">
@@ -202,13 +186,9 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="hidden lg:block max-w-[220px] text-right font-mono text-xs text-emerald-300/80 uppercase leading-relaxed">
-              READ → REASON → ACT <br />
-              <span className="text-white font-bold">VERİDEN, AKSİYONA.</span>
-            </div>
           </section>
 
-          {/* 06 / CONTROL (Yeni Governance Katmanı) */}
+          {/* 06 / CONTROL */}
           <section data-stage="control" className="min-h-screen flex items-center justify-between py-20">
             <div className="flex items-start gap-6 max-w-md">
               <div className="flex flex-col items-center">
@@ -232,11 +212,20 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="hidden lg:block max-w-[220px] text-right font-mono text-xs text-amber-300/80 uppercase leading-relaxed">
-              AUTONOMY, <br />
-              <span className="text-white font-bold">WITH ACCOUNTABILITY.</span>
-            </div>
           </section>
+
+          {/* Architecture Manifesto Banner */}
+          <div className="my-16 p-8 rounded-3xl bg-slate-950/90 border border-cyan-500/30 text-center relative overflow-hidden backdrop-blur-2xl">
+            <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-cyan-400 block mb-2">
+              ENTERPRISE AGENT ARCHITECTURE
+            </span>
+            <h3 className="text-xl md:text-2xl font-black text-white mb-2">
+              THIS IS NOT A CHATBOT. THIS IS AN ENTERPRISE AGENT SYSTEM.
+            </h3>
+            <p className="text-slate-400 text-xs font-light max-w-xl mx-auto">
+              Veriyi sadece gösteren değil, bağlamı anlayan, reasoning yapan ve denetim altında aksiyona geçen bütünleşik kurumsal mimari.
+            </p>
+          </div>
 
           {/* 07 / OBSERVATION */}
           <section id="lab" data-stage="lab" className="min-h-screen flex flex-col justify-center py-20">
@@ -249,7 +238,7 @@ export default function Home() {
                 Teknoloji hızla değişiyor. Yeni modeller, yeni agent mimarileri, yeni protokoller, yeni araçlar ve yeni sorular... Hangileri kalıcı? Hangileri gerçekten işe yarıyor? Ve hangileri kurumsal sistemlerin çalışma biçimini değiştirecek?
               </p>
 
-              {/* 2026 Architectural Signals Bandı */}
+              {/* Signals Flow Bandı */}
               <div className="my-8 py-4 px-6 bg-slate-950/90 rounded-2xl border border-slate-800/80 overflow-x-auto">
                 <div className="flex items-center justify-center gap-3 font-mono text-[11px] text-slate-400 whitespace-nowrap">
                   <span className="text-cyan-400">CONTEXT ENGINEERING</span>
@@ -303,7 +292,7 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Final Manifesto & Hakkında */}
+          {/* Hakkında & Final Manifesto */}
           <section id="hakkinda" className="py-24 border-t border-slate-900">
             <div className="max-w-3xl mx-auto text-center space-y-6">
               <span className="text-xs font-mono uppercase tracking-[0.3em] text-cyan-400 block">
