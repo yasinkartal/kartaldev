@@ -9,7 +9,7 @@ export default function Home() {
     <SmoothScroll>
       <main className="min-h-screen bg-[#03050c] text-slate-100 relative overflow-hidden font-sans selection:bg-cyan-500/30 selection:text-cyan-200">
         
-        {/* Sticky 3D Canvas */}
+        {/* Sticky 3D Canvas (Scroll süresince ekranda sabit durur) */}
         <div className="fixed inset-0 pointer-events-none z-0 flex items-center justify-center">
           <div className="w-full h-full max-w-7xl mx-auto pointer-events-auto">
             <EnterpriseCore />
@@ -37,8 +37,11 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto px-8 relative z-10 pt-28">
           
-          {/* Konsept Tanıtım Cümlesi */}
-          <div className="mb-12 max-w-3xl border-l-2 border-cyan-500/50 pl-4 py-1">
+          {/* Konsept Tanıtım Cümlesi & Slogan */}
+          <div className="mb-16 max-w-3xl border-l-2 border-cyan-500/60 pl-6 py-2 bg-gradient-to-r from-cyan-950/20 to-transparent rounded-r-2xl">
+            <span className="text-xs font-mono uppercase tracking-[0.25em] text-cyan-400 font-semibold block mb-2">
+              VERİDEN BAĞLAMA, BAĞLAMDAN ZEKÂYA.
+            </span>
             <p className="text-slate-300 text-sm md:text-base font-light leading-relaxed">
               Kurumsal sistemlerin veriden bağlama, bağlamdan zekâya dönüşümünü araştıran bağımsız teknoloji laboratuvarı.
             </p>
@@ -229,10 +232,7 @@ export default function Home() {
               <span className="text-xs font-mono uppercase tracking-widest text-cyan-400">HAKKINDA</span>
               <h2 className="text-2xl font-bold text-white">KARTAL.DEV Nedir?</h2>
               <p className="text-slate-300 text-xs md:text-sm leading-relaxed font-light">
-                KARTAL.DEV, Yasin Kartal'ın ERP sistemleri, kurumsal veri, yapay zekâ ve agent mimarileri üzerine araştırmalarını, deneylerini ve teknik notlarını paylaştığı bağımsız teknoloji laboratuvarıdır.
-              </p>
-              <p className="text-slate-500 text-[11px] leading-relaxed font-light italic">
-                Buradaki görüşler ve içerikler kişiseldir; mevcut veya geçmiş işverenleri temsil etmez.
+                Teknolojinin nasıl değiştiğini anlamaya çalışan bağımsız bir teknoloji laboratuvarı. Buradaki görüşler ve içerikler kişiseldir.
               </p>
             </div>
           </section>
