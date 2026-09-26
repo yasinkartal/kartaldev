@@ -2,25 +2,30 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="w-full py-8 border-t border-white/10 bg-black/50 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-400">
-        <p>© {new Date().getFullYear()} Yasin Kartal. All rights reserved.</p>
-        
-        <div className="flex items-center gap-6">
+    <footer className="w-full py-12 border-t border-slate-900 bg-slate-950/90 backdrop-blur-md relative z-10 text-center text-xs text-slate-500">
+      <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div>
+          <span className="font-bold text-white tracking-widest">KARTAL.DEV</span> — ERP • DATA • CONTEXT • AGENTS
+        </div>
+        <div className="flex gap-6 text-xs font-medium">
           <a
             href="https://tr.linkedin.com/in/yasinkartal"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white transition-colors"
+            className="hover:text-cyan-400 transition-colors"
           >
             LinkedIn
           </a>
           <a
             href="mailto:yasin.kartal@outlook.com"
-            className="hover:text-white transition-colors"
+            className="hover:text-cyan-400 transition-colors"
           >
             Email
           </a>
+        </div>
+        <div className="text-[10px] text-slate-600">
+          Buradaki görüşler ve içerikler kişiseldir; mevcut veya geçmiş işverenleri temsil etmez. <br />
+          © {new Date().getFullYear()} Yasin Kartal
         </div>
       </div>
     </footer>
