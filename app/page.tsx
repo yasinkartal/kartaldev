@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import SmoothScroll from "./components/SmoothScroll";
 import EnterpriseCore from "./components/EnterpriseCore";
 import KnowledgeMap from "./components/KnowledgeMap";
+import { Post, LabExperiment } from "@/app/types/content";
 
 export default function Home() {
   return (
@@ -237,21 +238,21 @@ export default function Home() {
               </div>
               <div className="flex gap-3 text-xs font-mono text-slate-400">
                 <span className="text-cyan-400 font-bold border-b border-cyan-400 pb-0.5 cursor-pointer">ALL</span>
-                <span className="hover:text-white cursor-pointer">ESSAYS</span>
-                <span className="hover:text-white cursor-pointer">NOTES</span>
-                <span className="hover:text-white cursor-pointer">SIGNALS</span>
+                <span className="hover:text-white cursor-pointer transition-colors">ESSAYS</span>
+                <span className="hover:text-white cursor-pointer transition-colors">NOTES</span>
+                <span className="hover:text-white cursor-pointer transition-colors">SIGNALS</span>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* ESSAY / 001 */}
-              <div className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-cyan-500/50 transition-all flex flex-col justify-between">
+              <div className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-cyan-500/50 transition-all flex flex-col justify-between group">
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="px-2 py-0.5 text-[10px] font-mono bg-cyan-950 border border-cyan-800 text-cyan-400 rounded">ESSAY / 001</span>
                     <span className="text-[10px] font-mono text-slate-500">12 MIN READ • SEP 2026</span>
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2 leading-snug">
+                  <h3 className="text-lg font-bold text-white mb-2 leading-snug group-hover:text-cyan-300 transition-colors">
                     Why Enterprise AI Is a Context Problem
                   </h3>
                   <p className="text-slate-400 text-xs font-light leading-relaxed mb-4">
@@ -265,13 +266,13 @@ export default function Home() {
               </div>
 
               {/* NOTE / 018 */}
-              <div className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-purple-500/50 transition-all flex flex-col justify-between">
+              <div className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-purple-500/50 transition-all flex flex-col justify-between group">
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="px-2 py-0.5 text-[10px] font-mono bg-purple-950 border border-purple-800 text-purple-400 rounded">NOTE / 018</span>
                     <span className="text-[10px] font-mono text-slate-500">3 MIN READ • 27 SEP 2026</span>
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2 leading-snug">
+                  <h3 className="text-lg font-bold text-white mb-2 leading-snug group-hover:text-purple-300 transition-colors">
                     Why MCP Matters for ERP Systems
                   </h3>
                   <p className="text-slate-400 text-xs font-light leading-relaxed mb-4">
@@ -280,7 +281,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center justify-between pt-4 border-t border-slate-900 text-[10px] font-mono text-slate-500">
                   <span>TOPICS: MCP, INTEGRATION</span>
-                  <span className="text-purple-400">READ NOTE →</span>
+                  <span className="text-purple-400 group-hover:translate-x-1 transition-transform">READ NOTE →</span>
                 </div>
               </div>
             </div>
@@ -310,7 +311,6 @@ export default function Home() {
                   SAP CDS View metadatalarını MCP arayüzü üzerinden agent'lara dinamik tool olarak sunan entegrasyon prototipi.
                 </p>
 
-                {/* Bağlantılı Yazı Göndermesi */}
                 <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80 mb-4 text-[11px] font-mono text-slate-400">
                   <span className="text-slate-500 block mb-0.5">RELATED WRITING:</span>
                   <span className="text-cyan-400 hover:underline cursor-pointer">NOTE / 018 — Why MCP Matters for ERP Systems</span>
@@ -336,7 +336,6 @@ export default function Home() {
                   Satın alma siparişi blokajlarını, tedarikçi risk skorlarını ve onay kurallarını otonom inceleyen insan denetimli agent.
                 </p>
 
-                {/* Bağlantılı Yazı Göndermesi */}
                 <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80 mb-4 text-[11px] font-mono text-slate-400">
                   <span className="text-slate-500 block mb-0.5">RELATED WRITING:</span>
                   <span className="text-cyan-400 hover:underline cursor-pointer">ESSAY / 001 — Why Enterprise AI Is a Context Problem</span>
@@ -361,7 +360,6 @@ export default function Home() {
               <span className="text-xs font-mono text-slate-500">INTERACTIVE TAXONOMY</span>
             </div>
 
-            {/* KnowledgeMap Bileşeni */}
             <KnowledgeMap />
           </section>
 
