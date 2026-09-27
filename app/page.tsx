@@ -253,7 +253,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* ESSAY / 001 */}
               <div className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-cyan-500/50 transition-all flex flex-col justify-between group">
                 <div>
@@ -261,7 +261,7 @@ export default function Home() {
                     <span className="px-2 py-0.5 text-[10px] font-mono bg-cyan-950 border border-cyan-800 text-cyan-400 rounded">ESSAY / 001</span>
                     <span className="text-[10px] font-mono text-slate-500">12 DAKİKA • EYLÜL 2026</span>
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2 leading-snug group-hover:text-cyan-300 transition-colors">
+                  <h3 className="text-base font-bold text-white mb-2 leading-snug group-hover:text-cyan-300 transition-colors">
                     Why Enterprise AI Is a Context Problem
                   </h3>
                   <p className="text-slate-400 text-xs font-light leading-relaxed mb-4">
@@ -269,8 +269,8 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="flex items-center justify-between pt-4 border-t border-slate-900 text-[10px] font-mono text-slate-500">
-                  <span>KONULAR: BAĞLAM, ERP, AJANLAR</span>
-                  <span className="text-cyan-400 group-hover:translate-x-1 transition-transform">YAZILARI KEŞFET →</span>
+                  <span>CONTEXT, ERP, AGENTS</span>
+                  <span className="text-cyan-400 group-hover:translate-x-1 transition-transform">OKU →</span>
                 </div>
               </div>
 
@@ -279,9 +279,9 @@ export default function Home() {
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="px-2 py-0.5 text-[10px] font-mono bg-purple-950 border border-purple-800 text-purple-400 rounded">NOTE / 018</span>
-                    <span className="text-[10px] font-mono text-slate-500">3 DAKİKA • 27 EYLÜL 2026</span>
+                    <span className="text-[10px] font-mono text-slate-500">3 DAKİKA • EYLÜL 2026</span>
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2 leading-snug group-hover:text-purple-300 transition-colors">
+                  <h3 className="text-base font-bold text-white mb-2 leading-snug group-hover:text-purple-300 transition-colors">
                     Why MCP Matters for ERP Systems
                   </h3>
                   <p className="text-slate-400 text-xs font-light leading-relaxed mb-4">
@@ -289,8 +289,28 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="flex items-center justify-between pt-4 border-t border-slate-900 text-[10px] font-mono text-slate-500">
-                  <span>KONULAR: MCP, ENTEGRASYON</span>
-                  <span className="text-purple-400 group-hover:translate-x-1 transition-transform">YAZILARI KEŞFET →</span>
+                  <span>MCP, INTEGRATION</span>
+                  <span className="text-purple-400 group-hover:translate-x-1 transition-transform">OKU →</span>
+                </div>
+              </div>
+
+              {/* SIGNAL / 001 */}
+              <div className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-amber-500/50 transition-all flex flex-col justify-between group">
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="px-2 py-0.5 text-[10px] font-mono bg-amber-950 border border-amber-800 text-amber-400 rounded">SIGNAL / 001</span>
+                    <span className="text-[10px] font-mono text-slate-500">2 DAKİKA • EYLÜL 2026</span>
+                  </div>
+                  <h3 className="text-base font-bold text-white mb-2 leading-snug group-hover:text-amber-300 transition-colors">
+                    Agent-to-Agent (A2A) Layer
+                  </h3>
+                  <p className="text-slate-400 text-xs font-light leading-relaxed mb-4">
+                    Ajanların birbirleriyle otonom iletişim kurduğu protokollere dair güncel pazar sinyali ve kurumsal sistemlere etkisi.
+                  </p>
+                </div>
+                <div className="flex items-center justify-between pt-4 border-t border-slate-900 text-[10px] font-mono text-slate-500">
+                  <span>A2A, MULTI-AGENT</span>
+                  <span className="text-amber-400 group-hover:translate-x-1 transition-transform">İNCELE →</span>
                 </div>
               </div>
             </div>
@@ -309,52 +329,104 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* LAB / 001 */}
-              <div className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-emerald-500/50 transition-all">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="px-2 py-0.5 text-[10px] font-mono bg-emerald-950 border border-emerald-800 text-emerald-400 rounded">LAB / 001</span>
-                  <span className="text-[10px] font-mono text-emerald-400 font-bold">TAMAMLANDI</span>
-                </div>
-                <h3 className="text-base font-bold text-white mb-2">
-                  SAP CDS → MCP → LLM Integration
-                </h3>
-                <p className="text-slate-400 text-xs font-light mb-4">
-                  SAP CDS View metadatalarını MCP arayüzü üzerinden agent'lara dinamik tool olarak sunan entegrasyon prototipi.
-                </p>
+              <div className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-emerald-500/50 transition-all flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="px-2 py-0.5 text-[10px] font-mono bg-emerald-950 border border-emerald-800 text-emerald-400 rounded">LAB / 001</span>
+                    <span className="text-[10px] font-mono text-emerald-400 font-bold">TAMAMLANDI</span>
+                  </div>
+                  
+                  <h3 className="text-lg font-bold text-white mb-3">
+                    SAP CDS → MCP → LLM Integration
+                  </h3>
 
-                <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80 mb-4 text-[11px] font-mono text-slate-400">
-                  <span className="text-slate-500 block mb-0.5">İLGİLİ YAZI:</span>
-                  <span className="text-cyan-400 hover:underline cursor-pointer">NOTE / 018 — Why MCP Matters for ERP Systems</span>
+                  {/* Experiment Metadata Grid */}
+                  <div className="grid grid-cols-2 gap-2 my-4 p-3 rounded-xl bg-slate-900/60 border border-slate-800/80 font-mono text-[10px]">
+                    <div>
+                      <span className="text-slate-500 block">DOMAIN:</span>
+                      <span className="text-slate-300">DATA & METADATA</span>
+                    </div>
+                    <div>
+                      <span className="text-slate-500 block">SYSTEM:</span>
+                      <span className="text-slate-300">SAP S/4HANA</span>
+                    </div>
+                    <div>
+                      <span className="text-slate-500 block">TYPE:</span>
+                      <span className="text-slate-300">TOOL PROVIDER</span>
+                    </div>
+                    <div>
+                      <span className="text-slate-500 block">CONTROL:</span>
+                      <span className="text-slate-300">DETERMINISTIC</span>
+                    </div>
+                  </div>
+
+                  <p className="text-slate-400 text-xs font-light mb-4">
+                    SAP CDS View metadatalarını MCP arayüzü üzerinden agent'lara dinamik tool olarak sunan entegrasyon prototipi.
+                  </p>
                 </div>
 
-                <div className="flex flex-wrap gap-2 text-[10px] font-mono text-slate-500">
-                  <span className="px-2 py-1 bg-slate-900 border border-slate-800 rounded">SAP CDS</span>
-                  <span className="px-2 py-1 bg-slate-900 border border-slate-800 rounded">MCP</span>
-                  <span className="px-2 py-1 bg-slate-900 border border-slate-800 rounded">Python</span>
+                <div>
+                  <div className="p-3 rounded-xl bg-slate-900/30 border border-slate-800/40 mb-4 text-[11px] font-mono text-slate-400">
+                    <span className="text-slate-500 block mb-0.5">İLGİLİ YAZI:</span>
+                    <span className="text-cyan-400 hover:underline cursor-pointer">NOTE / 018 — Why MCP Matters for ERP Systems</span>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2 text-[10px] font-mono text-slate-500">
+                    <span className="px-2 py-1 bg-slate-900 border border-slate-800 rounded">SAP CDS</span>
+                    <span className="px-2 py-1 bg-slate-900 border border-slate-800 rounded">MCP</span>
+                    <span className="px-2 py-1 bg-slate-900 border border-slate-800 rounded">Python</span>
+                  </div>
                 </div>
               </div>
 
               {/* LAB / 002 */}
-              <div className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-emerald-500/50 transition-all">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="px-2 py-0.5 text-[10px] font-mono bg-emerald-950 border border-emerald-800 text-emerald-400 rounded">LAB / 002</span>
-                  <span className="text-[10px] font-mono text-cyan-400 font-bold">DEVAM EDİYOR</span>
-                </div>
-                <h3 className="text-base font-bold text-white mb-2">
-                  Procurement Context Agent
-                </h3>
-                <p className="text-slate-400 text-xs font-light mb-4">
-                  Satın alma siparişi blokajlarını, tedarikçi risk skorlarını ve onay kurallarını otonom inceleyen insan denetimli agent.
-                </p>
+              <div className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-emerald-500/50 transition-all flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="px-2 py-0.5 text-[10px] font-mono bg-emerald-950 border border-emerald-800 text-emerald-400 rounded">LAB / 002</span>
+                    <span className="text-[10px] font-mono text-cyan-400 font-bold">DEVAM EDİYOR</span>
+                  </div>
 
-                <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80 mb-4 text-[11px] font-mono text-slate-400">
-                  <span className="text-slate-500 block mb-0.5">İLGİLİ YAZI:</span>
-                  <span className="text-cyan-400 hover:underline cursor-pointer">ESSAY / 001 — Why Enterprise AI Is a Context Problem</span>
+                  <h3 className="text-lg font-bold text-white mb-3">
+                    Procurement Context Agent
+                  </h3>
+
+                  {/* Experiment Metadata Grid */}
+                  <div className="grid grid-cols-2 gap-2 my-4 p-3 rounded-xl bg-slate-900/60 border border-slate-800/80 font-mono text-[10px]">
+                    <div>
+                      <span className="text-slate-500 block">DOMAIN:</span>
+                      <span className="text-slate-300">PROCUREMENT</span>
+                    </div>
+                    <div>
+                      <span className="text-slate-500 block">SYSTEM:</span>
+                      <span className="text-slate-300">ERP / MM</span>
+                    </div>
+                    <div>
+                      <span className="text-slate-500 block">TYPE:</span>
+                      <span className="text-slate-300">AUTONOMOUS AGENT</span>
+                    </div>
+                    <div>
+                      <span className="text-slate-500 block">CONTROL:</span>
+                      <span className="text-slate-300">HUMAN-IN-THE-LOOP</span>
+                    </div>
+                  </div>
+
+                  <p className="text-slate-400 text-xs font-light mb-4">
+                    Satın alma siparişi blokajlarını, tedarikçi risk skorlarını ve onay kurallarını otonom inceleyen insan denetimli agent.
+                  </p>
                 </div>
 
-                <div className="flex flex-wrap gap-2 text-[10px] font-mono text-slate-500">
-                  <span className="px-2 py-1 bg-slate-900 border border-slate-800 rounded">Agents</span>
-                  <span className="px-2 py-1 bg-slate-900 border border-slate-800 rounded">Governance</span>
-                  <span className="px-2 py-1 bg-slate-900 border border-slate-800 rounded">ERP Context</span>
+                <div>
+                  <div className="p-3 rounded-xl bg-slate-900/30 border border-slate-800/40 mb-4 text-[11px] font-mono text-slate-400">
+                    <span className="text-slate-500 block mb-0.5">İLGİLİ YAZI:</span>
+                    <span className="text-cyan-400 hover:underline cursor-pointer">ESSAY / 001 — Why Enterprise AI Is a Context Problem</span>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2 text-[10px] font-mono text-slate-500">
+                    <span className="px-2 py-1 bg-slate-900 border border-slate-800 rounded">Agents</span>
+                    <span className="px-2 py-1 bg-slate-900 border border-slate-800 rounded">Governance</span>
+                    <span className="px-2 py-1 bg-slate-900 border border-slate-800 rounded">ERP Context</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -382,7 +454,7 @@ export default function Home() {
               </span>
               <h2 className="text-2xl font-bold text-white">KARTAL.DEV Nedir?</h2>
               <p className="text-slate-300 text-xs md:text-sm leading-relaxed font-light">
-                Teknolojinin nasıl değiştiğini anlamaya çalışan bağımsız bir teknoloji laboratuvarı. Buradaki görüşler ve içerikler kişiseldir.
+                KARTAL.DEV, kurumsal sistemler ile yapay zekânın kesişimini araştırdığım ve inşa ettiğim bağımsız teknoloji laboratuvarıdır. ERP, veri, context engineering ve agent sistemleri üzerine fikirleri gerçek deneylere, prototiplere ve teknik çalışmalara dönüştürüyorum.
               </p>
             </div>
           </section>
