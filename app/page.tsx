@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import SmoothScroll from "./components/SmoothScroll";
 import EnterpriseCore from "./components/EnterpriseCore";
 import KnowledgeMap from "./components/KnowledgeMap";
-import { Post, LabExperiment } from "@/app/types/content";
+import { Post, LabExperiment } from "./app/types/content";
 
 export default function Home() {
   return (
