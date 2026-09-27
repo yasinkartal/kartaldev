@@ -3,13 +3,14 @@
 import Footer from "./components/Footer";
 import SmoothScroll from "./components/SmoothScroll";
 import EnterpriseCore from "./components/EnterpriseCore";
+import KnowledgeMap from "./components/KnowledgeMap";
 
 export default function Home() {
   return (
     <SmoothScroll>
       <main className="min-h-screen bg-[#03050c] text-slate-100 relative overflow-hidden font-sans selection:bg-cyan-500/30 selection:text-cyan-200">
         
-        {/* Sticky 3D Canvas (Scroll ile Katman Katman İnşa Edilen Mimari Obje) */}
+        {/* Sticky 3D Canvas */}
         <div className="fixed inset-0 pointer-events-none z-0 flex items-center justify-center lg:justify-end lg:pr-12">
           <div className="w-full h-full max-w-4xl pointer-events-auto">
             <EnterpriseCore />
@@ -227,69 +228,141 @@ export default function Home() {
             </p>
           </div>
 
-          {/* 07 / OBSERVATION */}
-          <section id="lab" data-stage="lab" className="min-h-screen flex flex-col justify-center py-20">
-            <div className="max-w-2xl mx-auto text-center">
-              <span className="text-xs uppercase font-mono tracking-widest text-cyan-400 block mb-2">07 / OBSERVATION</span>
-              <h2 className="text-3xl lg:text-4xl font-black text-white mb-4">
-                Peki bundan sonra?
-              </h2>
-              <p className="text-slate-400 text-sm leading-relaxed mb-6 font-light max-w-xl mx-auto">
-                Teknoloji hızla değişiyor. Yeni modeller, yeni agent mimarileri, yeni protokoller, yeni araçlar ve yeni sorular... Hangileri kalıcı? Hangileri gerçekten işe yarıyor? Ve hangileri kurumsal sistemlerin çalışma biçimini değiştirecek?
-              </p>
-
-              {/* Signals Flow Bandı */}
-              <div className="my-8 py-4 px-6 bg-slate-950/90 rounded-2xl border border-slate-800/80 overflow-x-auto">
-                <div className="flex items-center justify-center gap-3 font-mono text-[11px] text-slate-400 whitespace-nowrap">
-                  <span className="text-cyan-400">CONTEXT ENGINEERING</span>
-                  <span>↓</span>
-                  <span className="text-purple-400">TOOL USE</span>
-                  <span>↓</span>
-                  <span className="text-blue-400">AGENTIC WORKFLOWS</span>
-                  <span>↓</span>
-                  <span className="text-emerald-400">MULTI-AGENT SYSTEMS</span>
-                  <span>↓</span>
-                  <span className="text-amber-400">HUMAN GOVERNANCE</span>
-                  <span>↓</span>
-                  <span className="text-white font-bold">SYSTEMS OF ACTION</span>
-                </div>
+          {/* YAZILAR SECTION */}
+          <section id="yazilar" className="py-20 border-t border-slate-900">
+            <div className="flex justify-between items-end mb-10">
+              <div>
+                <span className="text-xs font-mono uppercase tracking-widest text-cyan-400 block mb-1">THINK</span>
+                <h2 className="text-2xl font-bold text-white">YAZILAR</h2>
               </div>
-
-              <div className="inline-flex items-center gap-6 font-mono text-xs text-cyan-300 bg-slate-950/80 p-4 rounded-2xl border border-slate-800 mb-12">
-                <span>OBSERVE</span>
-                <span>•</span>
-                <span>UNDERSTAND</span>
-                <span>•</span>
-                <span>EXPERIMENT</span>
+              <div className="flex gap-3 text-xs font-mono text-slate-400">
+                <span className="text-cyan-400 font-bold border-b border-cyan-400 pb-0.5 cursor-pointer">ALL</span>
+                <span className="hover:text-white cursor-pointer">ESSAYS</span>
+                <span className="hover:text-white cursor-pointer">NOTES</span>
+                <span className="hover:text-white cursor-pointer">SIGNALS</span>
               </div>
             </div>
 
-            {/* Alt Kart Yönlendirmeleri */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
-              <div id="yazilar" className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-cyan-500/50 backdrop-blur-xl flex justify-between items-end group transition-all">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* ESSAY / 001 */}
+              <div className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-cyan-500/50 transition-all flex flex-col justify-between">
                 <div>
-                  <h3 className="text-base font-bold text-white mb-1">YAZILAR</h3>
-                  <p className="text-xs text-slate-400 font-light">Teknoloji haberleri, gelişmeler, analizler ve notlar.</p>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="px-2 py-0.5 text-[10px] font-mono bg-cyan-950 border border-cyan-800 text-cyan-400 rounded">ESSAY / 001</span>
+                    <span className="text-[10px] font-mono text-slate-500">12 MIN READ • SEP 2026</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-2 leading-snug">
+                    Why Enterprise AI Is a Context Problem
+                  </h3>
+                  <p className="text-slate-400 text-xs font-light leading-relaxed mb-4">
+                    ERP verileri tek başına modeller için anlamsızdır. Gerçek dönüşüm, verinin etrafındaki iş kurallarının ve semantik bağlamın modele aktarılmasıyla başlar.
+                  </p>
                 </div>
-                <span className="w-8 h-8 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">→</span>
+                <div className="flex items-center justify-between pt-4 border-t border-slate-900 text-[10px] font-mono text-slate-500">
+                  <span>TOPICS: CONTEXT, ERP, AGENTS</span>
+                  <span className="text-cyan-400 group-hover:translate-x-1 transition-transform">READ ESSAY →</span>
+                </div>
               </div>
 
-              <div className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-purple-500/50 backdrop-blur-xl flex justify-between items-end group transition-all">
+              {/* NOTE / 018 */}
+              <div className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-purple-500/50 transition-all flex flex-col justify-between">
                 <div>
-                  <h3 className="text-base font-bold text-white mb-1">LAB</h3>
-                  <p className="text-xs text-slate-400 font-light">Yeni teknolojiler, küçük deneyler ve prototipler.</p>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="px-2 py-0.5 text-[10px] font-mono bg-purple-950 border border-purple-800 text-purple-400 rounded">NOTE / 018</span>
+                    <span className="text-[10px] font-mono text-slate-500">3 MIN READ • 27 SEP 2026</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-2 leading-snug">
+                    Why MCP Matters for ERP Systems
+                  </h3>
+                  <p className="text-slate-400 text-xs font-light leading-relaxed mb-4">
+                    MCP is interesting not because it lets an LLM call a tool. The interesting question is what happens when enterprise capabilities become discoverable by agents.
+                  </p>
                 </div>
-                <span className="w-8 h-8 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center text-purple-400 group-hover:scale-110 transition-transform">→</span>
-              </div>
-
-              <div id="konular" className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-emerald-500/50 backdrop-blur-xl flex justify-between items-end group transition-all">
-                <div>
-                  <h3 className="text-base font-bold text-white mb-1">KONULAR</h3>
-                  <p className="text-xs text-slate-400 font-light">ERP, Data, AI, Agents ve Automation.</p>
+                <div className="flex items-center justify-between pt-4 border-t border-slate-900 text-[10px] font-mono text-slate-500">
+                  <span>TOPICS: MCP, INTEGRATION</span>
+                  <span className="text-purple-400">READ NOTE →</span>
                 </div>
-                <span className="w-8 h-8 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-transform">→</span>
               </div>
             </div>
+          </section>
+
+          {/* LAB SECTION */}
+          <section id="lab" className="py-20 border-t border-slate-900">
+            <div className="flex justify-between items-end mb-10">
+              <div>
+                <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 block mb-1">BUILD</span>
+                <h2 className="text-2xl font-bold text-white">LAB & DENEYLER</h2>
+              </div>
+              <span className="text-xs font-mono text-slate-500">PROTOTYPES & EXPERIMENTS</span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* LAB / 001 */}
+              <div className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-emerald-500/50 transition-all">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="px-2 py-0.5 text-[10px] font-mono bg-emerald-950 border border-emerald-800 text-emerald-400 rounded">LAB / 001</span>
+                  <span className="text-[10px] font-mono text-emerald-400 font-bold">COMPLETED</span>
+                </div>
+                <h3 className="text-base font-bold text-white mb-2">
+                  SAP CDS → MCP → LLM Integration
+                </h3>
+                <p className="text-slate-400 text-xs font-light mb-4">
+                  SAP CDS View metadatalarını MCP arayüzü üzerinden agent'lara dinamik tool olarak sunan entegrasyon prototipi.
+                </p>
+
+                {/* Bağlantılı Yazı Göndermesi */}
+                <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80 mb-4 text-[11px] font-mono text-slate-400">
+                  <span className="text-slate-500 block mb-0.5">RELATED WRITING:</span>
+                  <span className="text-cyan-400 hover:underline cursor-pointer">NOTE / 018 — Why MCP Matters for ERP Systems</span>
+                </div>
+
+                <div className="flex flex-wrap gap-2 text-[10px] font-mono text-slate-500">
+                  <span className="px-2 py-1 bg-slate-900 border border-slate-800 rounded">SAP CDS</span>
+                  <span className="px-2 py-1 bg-slate-900 border border-slate-800 rounded">MCP</span>
+                  <span className="px-2 py-1 bg-slate-900 border border-slate-800 rounded">Python</span>
+                </div>
+              </div>
+
+              {/* LAB / 002 */}
+              <div className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-emerald-500/50 transition-all">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="px-2 py-0.5 text-[10px] font-mono bg-emerald-950 border border-emerald-800 text-emerald-400 rounded">LAB / 002</span>
+                  <span className="text-[10px] font-mono text-cyan-400 font-bold">IN PROGRESS</span>
+                </div>
+                <h3 className="text-base font-bold text-white mb-2">
+                  Procurement Context Agent
+                </h3>
+                <p className="text-slate-400 text-xs font-light mb-4">
+                  Satın alma siparişi blokajlarını, tedarikçi risk skorlarını ve onay kurallarını otonom inceleyen insan denetimli agent.
+                </p>
+
+                {/* Bağlantılı Yazı Göndermesi */}
+                <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80 mb-4 text-[11px] font-mono text-slate-400">
+                  <span className="text-slate-500 block mb-0.5">RELATED WRITING:</span>
+                  <span className="text-cyan-400 hover:underline cursor-pointer">ESSAY / 001 — Why Enterprise AI Is a Context Problem</span>
+                </div>
+
+                <div className="flex flex-wrap gap-2 text-[10px] font-mono text-slate-500">
+                  <span className="px-2 py-1 bg-slate-900 border border-slate-800 rounded">Agents</span>
+                  <span className="px-2 py-1 bg-slate-900 border border-slate-800 rounded">Governance</span>
+                  <span className="px-2 py-1 bg-slate-900 border border-slate-800 rounded">ERP Context</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* KONULAR / KNOWLEDGE MAP SECTION */}
+          <section id="konular" className="py-20 border-t border-slate-900">
+            <div className="flex justify-between items-end mb-10">
+              <div>
+                <span className="text-xs font-mono uppercase tracking-widest text-purple-400 block mb-1">MAP</span>
+                <h2 className="text-2xl font-bold text-white">KONULAR & KNOWLEDGE MAP</h2>
+              </div>
+              <span className="text-xs font-mono text-slate-500">INTERACTIVE TAXONOMY</span>
+            </div>
+
+            {/* KnowledgeMap Bileşeni */}
+            <KnowledgeMap />
           </section>
 
           {/* Hakkında & Final Manifesto */}
