@@ -26,9 +26,18 @@ export default function Home() {
             KARTAL<span className="text-cyan-500">.DEV</span>
           </div>
           <div className="flex items-center gap-6 text-xs tracking-wider uppercase font-medium">
-            <a href="#yazilar" className="text-slate-400 hover:text-cyan-400 transition-colors">YAZILAR</a>
-            <a href="#lab" className="text-slate-400 hover:text-cyan-400 transition-colors">LAB</a>
-            <a href="#konular" className="text-slate-400 hover:text-cyan-400 transition-colors">KONULAR</a>
+            <a href="#yazilar" className="text-slate-400 hover:text-cyan-400 transition-colors flex flex-col items-center">
+              <span>YAZILAR</span>
+              <span className="text-[8px] font-mono text-slate-500 font-normal lowercase">düşünceler & analizler</span>
+            </a>
+            <a href="#lab" className="text-slate-400 hover:text-cyan-400 transition-colors flex flex-col items-center">
+              <span>LAB</span>
+              <span className="text-[8px] font-mono text-slate-500 font-normal lowercase">deneyler & prototipler</span>
+            </a>
+            <a href="#konular" className="text-slate-400 hover:text-cyan-400 transition-colors flex flex-col items-center">
+              <span>KONULAR</span>
+              <span className="text-[8px] font-mono text-slate-500 font-normal lowercase">bilgi haritası</span>
+            </a>
             <a href="#hakkinda" className="text-slate-400 hover:text-cyan-400 transition-colors">HAKKINDA</a>
           </div>
           <div className="hidden md:flex items-center gap-2 text-[10px] font-mono text-slate-400">
@@ -57,7 +66,7 @@ export default function Home() {
                 <div className="w-[1px] h-32 bg-gradient-to-b from-slate-600 to-transparent" />
               </div>
               <div>
-                <span className="text-xs uppercase font-mono tracking-widest text-slate-400 block mb-2">RAW DATA LAYER</span>
+                <span className="text-xs uppercase font-mono tracking-widest text-slate-400 block mb-2">RAW DATA</span>
                 <h2 className="text-3xl lg:text-4xl font-black text-white mb-4 leading-tight">
                   Veri hep vardı.
                 </h2>
@@ -85,7 +94,7 @@ export default function Home() {
                 <div className="w-[1px] h-32 bg-gradient-to-b from-cyan-500 to-transparent" />
               </div>
               <div>
-                <span className="text-xs uppercase font-mono tracking-widest text-cyan-400 block mb-2">NETWORKS & INTEGRATION</span>
+                <span className="text-xs uppercase font-mono tracking-widest text-cyan-400 block mb-2">NETWORKS & PLATFORMS</span>
                 <h2 className="text-3xl lg:text-4xl font-black text-white mb-4 leading-tight">
                   Veri bağlandı.
                 </h2>
@@ -114,7 +123,7 @@ export default function Home() {
                 <div className="w-[1px] h-32 bg-gradient-to-b from-purple-500 to-transparent" />
               </div>
               <div>
-                <span className="text-xs uppercase font-mono tracking-widest text-purple-400 block mb-2">SEMANTIC & BUSINESS RULES</span>
+                <span className="text-xs uppercase font-mono tracking-widest text-purple-400 block mb-2">BUSINESS RULES</span>
                 <h2 className="text-3xl lg:text-4xl font-black text-white mb-4 leading-tight">
                   Veri anlam kazandı.
                 </h2>
@@ -228,15 +237,16 @@ export default function Home() {
             </p>
           </div>
 
-          {/* YAZILAR SECTION */}
+          {/* THINK / YAZILAR SECTION */}
           <section id="yazilar" className="py-20 border-t border-slate-900">
             <div className="flex justify-between items-end mb-10">
               <div>
-                <span className="text-xs font-mono uppercase tracking-widest text-cyan-400 block mb-1">THINK</span>
-                <h2 className="text-2xl font-bold text-white">YAZILAR</h2>
+                <span className="text-xs font-mono uppercase tracking-widest text-cyan-400 block mb-1">01 / THINK</span>
+                <h2 className="text-2xl font-bold text-white mb-1">YAZILAR</h2>
+                <p className="text-xs text-slate-400 font-light">Fikirler, analizler ve teknik notlar. Teknolojiyi yalnızca takip etmek değil, ne değiştirdiğini anlamak.</p>
               </div>
               <div className="flex gap-3 text-xs font-mono text-slate-400">
-                <span className="text-cyan-400 font-bold border-b border-cyan-400 pb-0.5 cursor-pointer">ALL</span>
+                <span className="text-cyan-400 font-bold border-b border-cyan-400 pb-0.5 cursor-pointer">TÜMÜ</span>
                 <span className="hover:text-white cursor-pointer transition-colors">ESSAYS</span>
                 <span className="hover:text-white cursor-pointer transition-colors">NOTES</span>
                 <span className="hover:text-white cursor-pointer transition-colors">SIGNALS</span>
@@ -249,7 +259,7 @@ export default function Home() {
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="px-2 py-0.5 text-[10px] font-mono bg-cyan-950 border border-cyan-800 text-cyan-400 rounded">ESSAY / 001</span>
-                    <span className="text-[10px] font-mono text-slate-500">12 MIN READ • SEP 2026</span>
+                    <span className="text-[10px] font-mono text-slate-500">12 DAKİKA • EYLÜL 2026</span>
                   </div>
                   <h3 className="text-lg font-bold text-white mb-2 leading-snug group-hover:text-cyan-300 transition-colors">
                     Why Enterprise AI Is a Context Problem
@@ -259,8 +269,8 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="flex items-center justify-between pt-4 border-t border-slate-900 text-[10px] font-mono text-slate-500">
-                  <span>TOPICS: CONTEXT, ERP, AGENTS</span>
-                  <span className="text-cyan-400 group-hover:translate-x-1 transition-transform">READ ESSAY →</span>
+                  <span>KONULAR: BAĞLAM, ERP, AJANLAR</span>
+                  <span className="text-cyan-400 group-hover:translate-x-1 transition-transform">YAZILARI KEŞFET →</span>
                 </div>
               </div>
 
@@ -269,31 +279,32 @@ export default function Home() {
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <span className="px-2 py-0.5 text-[10px] font-mono bg-purple-950 border border-purple-800 text-purple-400 rounded">NOTE / 018</span>
-                    <span className="text-[10px] font-mono text-slate-500">3 MIN READ • 27 SEP 2026</span>
+                    <span className="text-[10px] font-mono text-slate-500">3 DAKİKA • 27 EYLÜL 2026</span>
                   </div>
                   <h3 className="text-lg font-bold text-white mb-2 leading-snug group-hover:text-purple-300 transition-colors">
                     Why MCP Matters for ERP Systems
                   </h3>
                   <p className="text-slate-400 text-xs font-light leading-relaxed mb-4">
-                    MCP is interesting not because it lets an LLM call a tool. The interesting question is what happens when enterprise capabilities become discoverable by agents.
+                    MCP sadece bir LLM'in araç çağırması değildir. Asıl soru, kurumsal yeteneklerin ajanlar tarafından keşfedilebilir hale gelmesidir.
                   </p>
                 </div>
                 <div className="flex items-center justify-between pt-4 border-t border-slate-900 text-[10px] font-mono text-slate-500">
-                  <span>TOPICS: MCP, INTEGRATION</span>
-                  <span className="text-purple-400 group-hover:translate-x-1 transition-transform">READ NOTE →</span>
+                  <span>KONULAR: MCP, ENTEGRASYON</span>
+                  <span className="text-purple-400 group-hover:translate-x-1 transition-transform">YAZILARI KEŞFET →</span>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* LAB SECTION */}
+          {/* BUILD / LAB SECTION */}
           <section id="lab" className="py-20 border-t border-slate-900">
             <div className="flex justify-between items-end mb-10">
               <div>
-                <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 block mb-1">BUILD</span>
-                <h2 className="text-2xl font-bold text-white">LAB & DENEYLER</h2>
+                <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 block mb-1">02 / BUILD</span>
+                <h2 className="text-2xl font-bold text-white mb-1">LAB</h2>
+                <p className="text-xs text-slate-400 font-light">Deneyler, prototipler ve inşa ettiklerim. Kurumsal sistemler ve yapay zekânın kesişimindeki fikirleri gerçek deneylere dönüştürmek.</p>
               </div>
-              <span className="text-xs font-mono text-slate-500">PROTOTYPES & EXPERIMENTS</span>
+              <span className="text-xs font-mono text-emerald-400 cursor-pointer hover:underline">LAB'I KEŞFET →</span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -301,7 +312,7 @@ export default function Home() {
               <div className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-emerald-500/50 transition-all">
                 <div className="flex items-center justify-between mb-3">
                   <span className="px-2 py-0.5 text-[10px] font-mono bg-emerald-950 border border-emerald-800 text-emerald-400 rounded">LAB / 001</span>
-                  <span className="text-[10px] font-mono text-emerald-400 font-bold">COMPLETED</span>
+                  <span className="text-[10px] font-mono text-emerald-400 font-bold">TAMAMLANDI</span>
                 </div>
                 <h3 className="text-base font-bold text-white mb-2">
                   SAP CDS → MCP → LLM Integration
@@ -311,7 +322,7 @@ export default function Home() {
                 </p>
 
                 <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80 mb-4 text-[11px] font-mono text-slate-400">
-                  <span className="text-slate-500 block mb-0.5">RELATED WRITING:</span>
+                  <span className="text-slate-500 block mb-0.5">İLGİLİ YAZI:</span>
                   <span className="text-cyan-400 hover:underline cursor-pointer">NOTE / 018 — Why MCP Matters for ERP Systems</span>
                 </div>
 
@@ -326,7 +337,7 @@ export default function Home() {
               <div className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-emerald-500/50 transition-all">
                 <div className="flex items-center justify-between mb-3">
                   <span className="px-2 py-0.5 text-[10px] font-mono bg-emerald-950 border border-emerald-800 text-emerald-400 rounded">LAB / 002</span>
-                  <span className="text-[10px] font-mono text-cyan-400 font-bold">IN PROGRESS</span>
+                  <span className="text-[10px] font-mono text-cyan-400 font-bold">DEVAM EDİYOR</span>
                 </div>
                 <h3 className="text-base font-bold text-white mb-2">
                   Procurement Context Agent
@@ -336,7 +347,7 @@ export default function Home() {
                 </p>
 
                 <div className="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80 mb-4 text-[11px] font-mono text-slate-400">
-                  <span className="text-slate-500 block mb-0.5">RELATED WRITING:</span>
+                  <span className="text-slate-500 block mb-0.5">İLGİLİ YAZI:</span>
                   <span className="text-cyan-400 hover:underline cursor-pointer">ESSAY / 001 — Why Enterprise AI Is a Context Problem</span>
                 </div>
 
@@ -349,14 +360,15 @@ export default function Home() {
             </div>
           </section>
 
-          {/* KONULAR / KNOWLEDGE MAP SECTION */}
+          {/* EXPLORE / KONULAR SECTION */}
           <section id="konular" className="py-20 border-t border-slate-900">
             <div className="flex justify-between items-end mb-10">
               <div>
-                <span className="text-xs font-mono uppercase tracking-widest text-purple-400 block mb-1">MAP</span>
-                <h2 className="text-2xl font-bold text-white">KONULAR & KNOWLEDGE MAP</h2>
+                <span className="text-xs font-mono uppercase tracking-widest text-purple-400 block mb-1">03 / EXPLORE</span>
+                <h2 className="text-2xl font-bold text-white mb-1">KONULAR</h2>
+                <p className="text-xs text-slate-400 font-light">Araştırdığım teknolojiler ve bilgi haritası. ERP'den context engineering'e, agent'lardan evaluation'a uzanan bağlantıları keşfetmek.</p>
               </div>
-              <span className="text-xs font-mono text-slate-500">INTERACTIVE TAXONOMY</span>
+              <span className="text-xs font-mono text-purple-400 cursor-pointer hover:underline">KONULARI KEŞFET →</span>
             </div>
 
             <KnowledgeMap />
