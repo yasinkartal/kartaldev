@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useRef, useLayoutEffect, useMemo } from "react";
@@ -9,71 +10,109 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+type ProgressRef = React.MutableRefObject<number>;
+
 function clampRange(value: number, min: number, max: number) {
   return Math.max(0, Math.min(1, (value - min) / (max - min)));
 }
 
-// 01. DATA LAYER (Dağınık Veri Parçacıkları)
-function DataLayer({ progress }: { progress: React.MutableRefObject<number> }) {
-  const groupRef = useRef<THREE.Group>(null!);
+// 01. DATA LAYER
+function DataLayer({ progress }: { progress: ProgressRef }) {
+  const pointsRef = useRef<THREE.Points>(null);
+  const materialRef = useRef<THREE.PointsMaterial>(null);
+
   const count = 90;
 
-  const { initialPositions, targetPositions } = useMemo(() => {
-    const init = new Float32Array(count * 3);
-    const target = new Float32Array(count * 3);
-    for (let i = 0; i < count; i++) {
-      init[i * 3] = (Math.random() - 0.5) * 8;
-      init[i * 3 + 1] = (Math.random() - 0.5) * 8;
-      init[i * 3 + 2] = (Math.random() - 0.5) * 8;
+  const { initialPositions, targetPositions, currentPositions } =
+    useMemo(() => {
+      const initial = new Float32Array(count * 3);
+      const target = new Float32Array(count * 3);
+      const current = new Float32Array(count * 3);
 
-      const radius = 1.6;
-      const theta = Math.random() * Math.PI * 2;
-      const phi = Math.acos(Math.random() * 2 - 1);
-      target[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
-      target[i * 3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
-      target[i * 3 + 2] = radius * Math.cos(phi);
-    }
-    return { initialPositions: init, targetPositions: target };
-  }, []);
+      for (let i = 0; i < count; i++) {
+        const index = i * 3;
 
-  const currentPositions = useMemo(() => new Float32Array(count * 3), []);
+        initial[index] = (Math.random() - 0.5) * 8;
+        initial[index + 1] = (Math.random() - 0.5) * 8;
+        initial[index + 2] = (Math.random() - 0.5) * 8;
+
+        const radius = 1.6;
+        const theta = Math.random() * Math.PI * 2;
+        const phi = Math.acos(Math.random() * 2 - 1);
+
+        target[index] = radius * Math.sin(phi) * Math.cos(theta);
+        target[index + 1] = radius * Math.sin(phi) * Math.sin(theta);
+        target[index + 2] = radius * Math.cos(phi);
+      }
+
+      current.set(initial);
+
+      return {
+        initialPositions: initial,
+        targetPositions: target,
+        currentPositions: current,
+      };
+    }, []);
+
+  const lastStage = useRef(-1);
+  const lastOpacity = useRef(-1);
 
   useFrame(() => {
-    if (!groupRef.current) return;
+    const points = pointsRef.current;
+    const material = materialRef.current;
+
+    if (!points || !material) return;
+
     const p = progress.current;
-    const stage = clampRange(p, 0.0, 0.22);
+    const stage = clampRange(p, 0, 0.22);
 
-    for (let i = 0; i < count * 3; i++) {
-      currentPositions[i] = THREE.MathUtils.lerp(
-        initialPositions[i],
-        targetPositions[i],
-        stage
-      );
+    // Konumlar yalnızca aşama değiştiğinde güncellenir.
+    if (Math.abs(stage - lastStage.current) > 0.0001) {
+      for (let i = 0; i < count * 3; i++) {
+        currentPositions[i] = THREE.MathUtils.lerp(
+          initialPositions[i],
+          targetPositions[i],
+          stage
+        );
+      }
+
+      points.geometry.attributes.position.needsUpdate = true;
+      lastStage.current = stage;
     }
 
-    const geo = groupRef.current.children[0] as THREE.Points;
-    if (geo && geo.geometry) {
-      geo.geometry.attributes.position.needsUpdate = true;
+    const opacity =
+      p < 0.28 ? 1 - clampRange(p, 0.2, 0.28) : 0;
+
+    if (Math.abs(opacity - lastOpacity.current) > 0.0001) {
+      material.opacity = opacity;
+      lastOpacity.current = opacity;
     }
 
-    const opacity = p < 0.28 ? 1 - clampRange(p, 0.2, 0.28) : 0;
-    if (geo && geo.material) {
-      (geo.material as THREE.Material).opacity = opacity;
-    }
+    points.visible = opacity > 0.001;
   });
 
   return (
-    <group ref={groupRef}>
-      <Points positions={currentPositions} stride={3}>
-        <PointMaterial transparent color="#64748b" size={0.06} sizeAttenuation depthWrite={false} />
-      </Points>
-    </group>
+    <Points
+      ref={pointsRef}
+      positions={currentPositions}
+      stride={3}
+    >
+      <PointMaterial
+        ref={materialRef}
+        transparent
+        color="#64748b"
+        size={0.06}
+        sizeAttenuation
+        depthWrite={false}
+      />
+    </Points>
   );
 }
 
 // 02 -> 04 NETWORK & INTELLIGENCE LAYER
-function NetworkLayer({ progress }: { progress: React.MutableRefObject<number> }) {
-  const groupRef = useRef<THREE.Group>(null!);
+function NetworkLayer({ progress }: { progress: ProgressRef }) {
+  const groupRef = useRef<THREE.Group>(null);
+  const lastVisibility = useRef(-1);
 
   const nodes = useMemo(
     () => [
@@ -86,49 +125,118 @@ function NetworkLayer({ progress }: { progress: React.MutableRefObject<number> }
     []
   );
 
+  const materials = useMemo(
+    () => ({
+      wireframe: new THREE.MeshBasicMaterial({
+        color: "#00f0ff",
+        wireframe: true,
+        transparent: true,
+        opacity: 0,
+      }),
+      cyan: new THREE.MeshBasicMaterial({
+        color: "#38bdf8",
+        transparent: true,
+        opacity: 0,
+      }),
+      purple: new THREE.MeshBasicMaterial({
+        color: "#a855f7",
+        transparent: true,
+        opacity: 0,
+      }),
+    }),
+    []
+  );
+
   useFrame((state) => {
-    if (!groupRef.current) return;
+    const group = groupRef.current;
+    if (!group) return;
+
     const p = progress.current;
+
+    const visibility =
+      clampRange(p, 0.18, 0.28) *
+      (1 - clampRange(p, 0.8, 0.88));
+
+    // Görünürlük yalnızca değiştiğinde güncellenir.
+    if (Math.abs(visibility - lastVisibility.current) > 0.0001) {
+      materials.wireframe.opacity = visibility;
+      materials.cyan.opacity = visibility;
+      materials.purple.opacity = visibility;
+
+      lastVisibility.current = visibility;
+    }
+
+    group.visible = visibility > 0.001;
+
+    if (!group.visible) return;
+
     const t = state.clock.getElapsedTime();
 
-    const visibility = clampRange(p, 0.18, 0.28) * (1 - clampRange(p, 0.8, 0.88));
-    groupRef.current.scale.setScalar(THREE.MathUtils.lerp(0.5, 1.2, clampRange(p, 0.2, 0.75)));
+    group.scale.setScalar(
+      THREE.MathUtils.lerp(
+        0.5,
+        1.2,
+        clampRange(p, 0.2, 0.75)
+      )
+    );
 
-    const speed = THREE.MathUtils.lerp(0.05, 0.35, clampRange(p, 0.55, 0.8));
-    groupRef.current.rotation.y = t * speed;
-    groupRef.current.rotation.x = Math.sin(t * 0.1) * 0.2;
+    const speed = THREE.MathUtils.lerp(
+      0.05,
+      0.35,
+      clampRange(p, 0.55, 0.8)
+    );
+
+    group.rotation.y = t * speed;
+    group.rotation.x = Math.sin(t * 0.1) * 0.2;
 
     const { x, y } = state.pointer;
-    groupRef.current.position.x = THREE.MathUtils.lerp(groupRef.current.position.x, x * 0.4, 0.05);
-    groupRef.current.position.y = THREE.MathUtils.lerp(groupRef.current.position.y, y * 0.4, 0.05);
 
-    groupRef.current.traverse((child) => {
-      if ((child as THREE.Mesh).material) {
-        const mat = (child as THREE.Mesh).material as THREE.Material;
-        mat.transparent = true;
-        mat.opacity = visibility;
-      }
-    });
+    group.position.x = THREE.MathUtils.lerp(
+      group.position.x,
+      x * 0.4,
+      0.05
+    );
+
+    group.position.y = THREE.MathUtils.lerp(
+      group.position.y,
+      y * 0.4,
+      0.05
+    );
   });
 
   return (
     <group ref={groupRef}>
-      <Float speed={2} rotationIntensity={1} floatIntensity={1.2}>
-        <mesh>
+      <Float
+        speed={2}
+        rotationIntensity={1}
+        floatIntensity={1.2}
+      >
+        <mesh material={materials.wireframe}>
           <sphereGeometry args={[1, 32, 32]} />
-          <meshBasicMaterial color="#00f0ff" wireframe transparent />
         </mesh>
       </Float>
 
       {nodes.map((pos, idx) => (
         <group key={idx}>
-          <mesh position={pos}>
+          <mesh
+            position={pos}
+            material={
+              idx % 2 === 0
+                ? materials.cyan
+                : materials.purple
+            }
+          >
             <sphereGeometry args={[0.07, 16, 16]} />
-            <meshBasicMaterial color={idx % 2 === 0 ? "#38bdf8" : "#a855f7"} />
           </mesh>
+
           <Line
-            points={[[0, 0, 0], [pos.x, pos.y, pos.z]]}
-            color={idx % 2 === 0 ? "#00f0ff" : "#a855f7"}
+            points={[
+              [0, 0, 0],
+              [pos.x, pos.y, pos.z],
+            ]}
+            color={
+              idx % 2 === 0 ? "#00f0ff" : "#a855f7"
+            }
             lineWidth={1}
             transparent
             opacity={0.4}
@@ -140,30 +248,46 @@ function NetworkLayer({ progress }: { progress: React.MutableRefObject<number> }
 }
 
 // 05. OBSERVATION / LAB LAYER
-function LabLayer({ progress }: { progress: React.MutableRefObject<number> }) {
-  const meshRef = useRef<THREE.Mesh>(null!);
+function LabLayer({ progress }: { progress: ProgressRef }) {
+  const meshRef = useRef<THREE.Mesh>(null);
+  const materialRef = useRef<THREE.MeshBasicMaterial>(null);
 
   useFrame((state) => {
-    if (!meshRef.current) return;
-    const p = progress.current;
-    const labStage = clampRange(p, 0.8, 1.0);
+    const mesh = meshRef.current;
+    const material = materialRef.current;
 
-    meshRef.current.scale.setScalar(THREE.MathUtils.lerp(0.0, 2.2, labStage));
-    meshRef.current.rotation.z = state.clock.getElapsedTime() * 0.05;
+    if (!mesh || !material) return;
 
-    if (meshRef.current.material) {
-      (meshRef.current.material as THREE.Material).opacity = labStage * 0.6;
-    }
+    const stage = clampRange(progress.current, 0.8, 1);
+
+    mesh.visible = stage > 0.001;
+
+    if (!mesh.visible) return;
+
+    mesh.scale.setScalar(
+      THREE.MathUtils.lerp(0, 2.2, stage)
+    );
+
+    mesh.rotation.z =
+      state.clock.getElapsedTime() * 0.05;
+
+    material.opacity = stage * 0.6;
   });
 
   return (
-    <mesh ref={meshRef}>
+    <mesh ref={meshRef} visible={false}>
       <torusGeometry args={[2.5, 0.01, 16, 100]} />
-      <meshBasicMaterial color="#10b981" transparent wireframe />
+      <meshBasicMaterial
+        ref={materialRef}
+        color="#10b981"
+        transparent
+        wireframe
+      />
     </mesh>
   );
 }
 
+// MAIN 3D COMPONENT
 export default function EnterpriseCore() {
   const progress = useRef(0);
 
@@ -185,9 +309,22 @@ export default function EnterpriseCore() {
 
   return (
     <div className="w-full h-full min-h-[500px] flex items-center justify-center relative">
-      <Canvas camera={{ position: [0, 0, 6], fov: 60 }} dpr={[1, 2]}>
+      <Canvas
+        camera={{ position: [0, 0, 6], fov: 60 }}
+        dpr={[1, 1.5]}
+        gl={{
+          antialias: false,
+          powerPreference: "low-power",
+        }}
+      >
         <ambientLight intensity={0.8} />
-        <directionalLight position={[10, 10, 5]} intensity={2} color="#00f0ff" />
+
+        <directionalLight
+          position={[10, 10, 5]}
+          intensity={2}
+          color="#00f0ff"
+        />
+
         <DataLayer progress={progress} />
         <NetworkLayer progress={progress} />
         <LabLayer progress={progress} />
