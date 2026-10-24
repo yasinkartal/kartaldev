@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -12,50 +13,75 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://www.kartal.dev";
+
 export const metadata: Metadata = {
-  title: "KARTAL.DEV | ERP, Data, Context & Agents",
+  metadataBase: new URL(siteUrl),
+
+  alternates: {
+    canonical: siteUrl,
+  },
+
+  title: "Yasin Kartal | SAP, ERP & AI Solutions",
+
   description:
-    "ERP, data, context engineering, enterprise AI ve agents üzerine yazılar, deneyler ve teknik araştırmalar. Yasin Kartal'ın bağımsız teknoloji laboratuvarı.",
-  keywords: [
-    "ERP",
-    "Data",
-    "Context Engineering",
-    "Enterprise AI",
-    "Agents",
-    "SAP",
-    "ABAP",
-    "MCP",
-    "Yasin Kartal",
-  ],
-  authors: [{ name: "Yasin Kartal" }],
+    "SAP, ERP, enterprise AI, automation, and agentic solutions " +
+    "by Yasin Kartal. Projects, technical insights, and real-world " +
+    "enterprise use cases.",
+
   openGraph: {
-    title: "KARTAL.DEV | ERP, Data, Context & Agents",
-    description:
-      "Kurumsal sistemlerin veriden bağlama, bağlamdan zekâya dönüşümünü araştıran bağımsız teknoloji laboratuvarı.",
-    url: "https://kartal.dev",
-    siteName: "KARTAL.DEV",
-    locale: "tr_TR",
     type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "KARTAL.DEV | ERP, Data, Context & Agents",
+    siteName: "Yasin Kartal",
+    title: "Yasin Kartal | SAP, ERP & AI Solutions",
     description:
-      "Kurumsal sistemlerin veriden bağlama, bağlamdan zekâya dönüşümünü araştıran bağımsız teknoloji laboratuvarı.",
+      "SAP ERP, enterprise AI, automation and agentic solutions.",
+    url: siteUrl,
   },
+};
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${siteUrl}/#person`,
+  name: "Yasin Kartal",
+  url: siteUrl,
+
+  sameAs: [
+    "https://tr.linkedin.com/in/yasinkartal",
+  ],
+
+  description:
+    "SAP ERP and enterprise AI professional specializing in " +
+    "business process automation and agentic AI systems.",
+
+  knowsAbout: [
+    "SAP ERP",
+    "SAP S/4HANA",
+    "Enterprise Artificial Intelligence",
+    "Agentic AI",
+    "Business Process Automation",
+  ],
 };
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode;
-}) {
+}: LayoutProps<"/">) {
   return (
     <html
-      lang="tr"
+      lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#03050c] text-slate-100">
+      <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personJsonLd).replace(
+              /</g,
+              "\\u003c"
+            ),
+          }}
+        />
+
         {children}
       </body>
     </html>
