@@ -17,6 +17,11 @@ const siteUrl = "https://www.kartal.dev";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+
+  alternates: {
+    canonical: siteUrl,
+  },
+
   title: "Yasin Kartal | SAP, ERP & AI Solutions",
   description:
     "SAP, ERP, enterprise AI, automation, and agentic solutions " +
