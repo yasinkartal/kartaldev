@@ -19,54 +19,6 @@ export const metadata: Metadata = {
   },
 };
 
-const layers = [
-  {
-    number: "01",
-    title: "SAP ERP",
-    subtitle: "System of Record",
-    color: "text-cyan-300",
-    border: "border-cyan-500/30",
-    description:
-      "İş verilerinin, işlemlerin ve kurumsal süreçlerin bulunduğu kaynak sistem. SAP yetkilendirme ve iş kuralları burada da uygulanmalıdır.",
-  },
-  {
-    number: "02",
-    title: "Integration Layer",
-    subtitle: "CDS / OData / APIs",
-    color: "text-blue-300",
-    border: "border-blue-500/30",
-    description:
-      "ERP verilerini ve yeteneklerini kontrollü arayüzlerle sunar. Hangi alanların erişilebilir olduğu ve hangi işlemlerin yapılabileceği burada tasarlanır.",
-  },
-  {
-    number: "03",
-    title: "MCP Server",
-    subtitle: "Tools / Resources / Prompts",
-    color: "text-violet-300",
-    border: "border-violet-500/30",
-    description:
-      "İstemcilere standart bir protokol üzerinden araçlar ve diğer yetenekler sunar. ERP'ye özel bağlantı ve iş mantığı bu katmanda kontrollü şekilde kapsüllenebilir.",
-  },
-  {
-    number: "04",
-    title: "MCP Client",
-    subtitle: "Protocol Connection",
-    color: "text-fuchsia-300",
-    border: "border-fuchsia-500/30",
-    description:
-      "MCP Server ile protokol iletişimini yürütür. Host uygulamanın parçası olarak araç keşfi ve çağrılarının taşınmasına yardımcı olur.",
-  },
-  {
-    number: "05",
-    title: "AI Host / Agent",
-    subtitle: "LLM & Orchestration",
-    color: "text-emerald-300",
-    border: "border-emerald-500/30",
-    description:
-      "Kullanıcı isteğini yorumlar, uygun araçları seçer ve sonuçları açıklar. Nihai erişim ve işlem yetkisi yalnızca LLM kararına bırakılmamalıdır.",
-  },
-];
-
 const controls = [
   {
     title: "Authorization",
@@ -193,51 +145,8 @@ export default function MCPERPArticlePage() {
               </p>
             </div>
 
-            <div className="relative grid gap-3 md:grid-cols-5">
-              {layers.map((layer, index) => (
-                <div
-                  key={layer.number}
-                  className={`relative rounded-xl border ${layer.border} bg-slate-950/80 p-4`}
-                >
-                  <span className="font-mono text-[10px] text-slate-500">
-                    {layer.number} / 05
-                  </span>
-
-                  <h3 className={`mt-4 text-sm font-bold ${layer.color}`}>
-                    {layer.title}
-                  </h3>
-
-                  <p className="mt-2 text-[10px] leading-5 text-slate-400">
-                    {layer.subtitle}
-                  </p>
-
-                  {index < layers.length - 1 && (
-                    <span
-                      aria-hidden="true"
-                      className="absolute -right-3 top-1/2 z-10 hidden text-violet-400 md:block"
-                    >
-                      →
-                    </span>
-                  )}
-                </div>
-              ))}
-            </div>
-
-            <div className="relative mt-6 grid gap-3 md:grid-cols-2">
-              {layers.map((layer) => (
-                <div
-                  key={layer.number}
-                  className="rounded-xl border border-slate-800 bg-slate-950/60 p-4"
-                >
-                  <h3 className={`text-sm font-semibold ${layer.color}`}>
-                    {layer.title}
-                  </h3>
-
-                  <p className="mt-2 text-xs leading-6 text-slate-400">
-                    {layer.description}
-                  </p>
-                </div>
-              ))}
+            <div className="relative">
+              <MCPExplorer />
             </div>
 
             <p className="relative mt-5 font-mono text-[10px] leading-6 text-slate-500">
@@ -493,4 +402,3 @@ export default function MCPERPArticlePage() {
     </main>
   );
 }
-
