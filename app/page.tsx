@@ -452,10 +452,28 @@ export default function Home() {
               <span className="text-xs font-mono uppercase tracking-[0.3em] text-cyan-400 block">
                 FROM SYSTEMS OF RECORD TO SYSTEMS OF ACTION.
               </span>
-              <h2 className="text-2xl font-bold text-white">KARTAL.DEV Nedir?</h2>
-              <p className="text-slate-300 text-xs md:text-sm leading-relaxed font-light">
-                KARTAL.DEV, kurumsal sistemler ile yapay zekânın kesişimini araştırdığım ve inşa ettiğim bağımsız teknoloji laboratuvarıdır. ERP, veri, context engineering ve agent sistemleri üzerine fikirleri gerçek deneylere, prototiplere ve teknik çalışmalara dönüştürüyorum.
-              </p>
+
+<h2 className="text-2xl font-bold text-white">
+  KARTAL.DEV Nedir?
+</h2>
+
+<p className="text-slate-300 text-xs md:text-sm leading-relaxed font-light">
+  Ben Yasin Kartal. SAP ERP, SAP S/4HANA, SAP HANA,
+  RISE with SAP, SAP Cloud ve SAP BTP teknolojileri
+  başta olmak üzere kurumsal sistemler, iş süreçleri,
+  veri entegrasyonu, otomasyon ve yapay zekâ
+  alanlarında çalışıyorum.
+
+  KARTAL.DEV, kurumsal teknolojiler ile yapay zekânın
+  kesişimini araştırdığım ve geliştirdiğim bağımsız
+  teknoloji laboratuvarımdır.
+
+  Burada ERP sistemleri, cloud platformları,
+  context engineering, enterprise AI ve agentic AI
+  üzerine fikirleri gerçek deneylere, çalışan
+  prototiplere ve teknik çalışmalara dönüştürüyorum.
+</p>
+
             </div>
           </section>
 
