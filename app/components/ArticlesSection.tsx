@@ -2,10 +2,24 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 type Category = "ALL" | "ESSAY" | "NOTE" | "SIGNAL";
+type VisualVariant = "context" | "mcp" | "agents";
 
-const articles = [
+type Article = {
+  id: string;
+  category: Exclude<Category, "ALL">;
+  title: string;
+  description: string;
+  tags: string[];
+  readingTime: string;
+  color: string;
+  visual: VisualVariant;
+  href?: string;
+};
+
+const articles: Article[] = [
   {
     id: "001",
     category: "ESSAY",
@@ -16,6 +30,7 @@ const articles = [
     readingTime: "12 DAKİKA",
     color: "cyan",
     visual: "context",
+    href: "/yazilar/enterprise-ai-context",
   },
   {
     id: "018",
@@ -39,12 +54,12 @@ const articles = [
     color: "amber",
     visual: "agents",
   },
-] as const;
+];
 
 function ArticleVisual({
   variant,
 }: {
-  variant: "context" | "mcp" | "agents";
+  variant: VisualVariant;
 }) {
   const palette = {
     context: {
@@ -241,7 +256,17 @@ export default function ArticlesSection() {
             key={`${article.category}-${article.id}`}
             className="group flex flex-col overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/90 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/50 hover:shadow-xl hover:shadow-cyan-950/20"
           >
-            <ArticleVisual variant={article.visual} />
+            {article.href ? (
+              <Link
+                href={article.href}
+                aria-label={`${article.title} makalesini oku`}
+                className="block"
+              >
+                <ArticleVisual variant={article.visual} />
+              </Link>
+            ) : (
+              <ArticleVisual variant={article.visual} />
+            )}
 
             <div className="flex flex-1 flex-col p-6">
               <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
@@ -255,7 +280,16 @@ export default function ArticlesSection() {
               </div>
 
               <h3 className="mb-3 text-base font-bold leading-snug text-white transition-colors group-hover:text-cyan-300">
-                {article.title}
+                {article.href ? (
+                  <Link
+                    href={article.href}
+                    className="focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-400"
+                  >
+                    {article.title}
+                  </Link>
+                ) : (
+                  article.title
+                )}
               </h3>
 
               <p className="mb-6 flex-1 text-xs font-light leading-relaxed text-slate-400">
@@ -273,9 +307,19 @@ export default function ArticlesSection() {
                 ))}
               </div>
 
-              <span className="mt-4 font-mono text-[10px] text-cyan-400">
-                DETAY SAYFASI HAZIRLANIYOR
-              </span>
+              {article.href ? (
+                <Link
+                  href={article.href}
+                  className="mt-4 inline-flex w-fit items-center gap-2 font-mono text-[11px] font-bold text-cyan-400 transition-colors hover:text-cyan-200 focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-400"
+                >
+                  MAKALEYİ OKU
+                  <span aria-hidden="true">→</span>
+                </Link>
+              ) : (
+                <span className="mt-4 font-mono text-[10px] text-slate-500">
+                  YAKINDA
+                </span>
+              )}
             </div>
           </article>
         ))}
