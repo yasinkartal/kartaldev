@@ -42,6 +42,7 @@ const articles: Article[] = [
     readingTime: "3 DAKİKA",
     color: "purple",
     visual: "mcp",
+    href: "/yazilar/mcp-erp",
   },
   {
     id: "001",
