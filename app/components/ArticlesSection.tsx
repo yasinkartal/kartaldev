@@ -54,6 +54,7 @@ const articles: Article[] = [
     readingTime: "2 DAKİKA",
     color: "amber",
     visual: "agents",
+    href: "/yazilar/a2a-layer",
   },
 ];
 
