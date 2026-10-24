@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import SmoothScroll from "./components/SmoothScroll";
 import EnterpriseCore from "./components/EnterpriseCore";
 import KnowledgeMap from "./components/KnowledgeMap";
+import ArticlesSection from "./components/ArticlesSection";
 
 export default function Home() {
   return (
@@ -237,84 +238,8 @@ export default function Home() {
             </p>
           </div>
 
-          {/* THINK / YAZILAR SECTION */}
-          <section id="yazilar" className="py-20 border-t border-slate-900">
-            <div className="flex justify-between items-end mb-10">
-              <div>
-                <span className="text-xs font-mono uppercase tracking-widest text-cyan-400 block mb-1">01 / THINK</span>
-                <h2 className="text-2xl font-bold text-white mb-1">YAZILAR</h2>
-                <p className="text-xs text-slate-400 font-light">Fikirler, analizler ve teknik notlar. Teknolojiyi yalnızca takip etmek değil, ne değiştirdiğini anlamak.</p>
-              </div>
-              <div className="flex gap-3 text-xs font-mono text-slate-400">
-                <span className="text-cyan-400 font-bold border-b border-cyan-400 pb-0.5 cursor-pointer">TÜMÜ</span>
-                <span className="hover:text-white cursor-pointer transition-colors">ESSAYS</span>
-                <span className="hover:text-white cursor-pointer transition-colors">NOTES</span>
-                <span className="hover:text-white cursor-pointer transition-colors">SIGNALS</span>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* ESSAY / 001 */}
-              <div className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-cyan-500/50 transition-all flex flex-col justify-between group">
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="px-2 py-0.5 text-[10px] font-mono bg-cyan-950 border border-cyan-800 text-cyan-400 rounded">ESSAY / 001</span>
-                    <span className="text-[10px] font-mono text-slate-500">12 DAKİKA • EYLÜL 2026</span>
-                  </div>
-                  <h3 className="text-base font-bold text-white mb-2 leading-snug group-hover:text-cyan-300 transition-colors">
-                    Why Enterprise AI Is a Context Problem
-                  </h3>
-                  <p className="text-slate-400 text-xs font-light leading-relaxed mb-4">
-                    ERP verileri tek başına modeller için anlamsızdır. Gerçek dönüşüm, verinin etrafındaki iş kurallarının ve semantik bağlamın modele aktarılmasıyla başlar.
-                  </p>
-                </div>
-                <div className="flex items-center justify-between pt-4 border-t border-slate-900 text-[10px] font-mono text-slate-500">
-                  <span>CONTEXT, ERP, AGENTS</span>
-                  <span className="text-cyan-400 group-hover:translate-x-1 transition-transform">OKU →</span>
-                </div>
-              </div>
-
-              {/* NOTE / 018 */}
-              <div className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-purple-500/50 transition-all flex flex-col justify-between group">
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="px-2 py-0.5 text-[10px] font-mono bg-purple-950 border border-purple-800 text-purple-400 rounded">NOTE / 018</span>
-                    <span className="text-[10px] font-mono text-slate-500">3 DAKİKA • EYLÜL 2026</span>
-                  </div>
-                  <h3 className="text-base font-bold text-white mb-2 leading-snug group-hover:text-purple-300 transition-colors">
-                    Why MCP Matters for ERP Systems
-                  </h3>
-                  <p className="text-slate-400 text-xs font-light leading-relaxed mb-4">
-                    MCP sadece bir LLM'in araç çağırması değildir. Asıl soru, kurumsal yeteneklerin ajanlar tarafından keşfedilebilir hale gelmesidir.
-                  </p>
-                </div>
-                <div className="flex items-center justify-between pt-4 border-t border-slate-900 text-[10px] font-mono text-slate-500">
-                  <span>MCP, INTEGRATION</span>
-                  <span className="text-purple-400 group-hover:translate-x-1 transition-transform">OKU →</span>
-                </div>
-              </div>
-
-              {/* SIGNAL / 001 */}
-              <div className="p-6 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-amber-500/50 transition-all flex flex-col justify-between group">
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="px-2 py-0.5 text-[10px] font-mono bg-amber-950 border border-amber-800 text-amber-400 rounded">SIGNAL / 001</span>
-                    <span className="text-[10px] font-mono text-slate-500">2 DAKİKA • EYLÜL 2026</span>
-                  </div>
-                  <h3 className="text-base font-bold text-white mb-2 leading-snug group-hover:text-amber-300 transition-colors">
-                    Agent-to-Agent (A2A) Layer
-                  </h3>
-                  <p className="text-slate-400 text-xs font-light leading-relaxed mb-4">
-                    Ajanların birbirleriyle otonom iletişim kurduğu protokollere dair güncel pazar sinyali ve kurumsal sistemlere etkisi.
-                  </p>
-                </div>
-                <div className="flex items-center justify-between pt-4 border-t border-slate-900 text-[10px] font-mono text-slate-500">
-                  <span>A2A, MULTI-AGENT</span>
-                  <span className="text-amber-400 group-hover:translate-x-1 transition-transform">İNCELE →</span>
-                </div>
-              </div>
-            </div>
-          </section>
+{/* THINK / YAZILAR SECTION */}
+<ArticlesSection />
 
           {/* BUILD / LAB SECTION */}
           <section id="lab" className="py-20 border-t border-slate-900">
